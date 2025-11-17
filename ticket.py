@@ -36,9 +36,12 @@ def AltaTicket():
         nombre = input("Ingrese su Nombre: ")
         sector = input("Ingrese su Sector: ")
         asunto = input("Ingrese su asunto: ")
-        problema = input("Ingrese el problema que tiene: ")
+        problema = input("Describa el problema que tiene: ")
 
         numeroTicket = random.randint(1000,9999)
+
+        with open("tickets.txt","a",encoding="utf-8") as archivo:
+            archivo.write(f"{numeroTicket}|{nombre}|{sector}|{asunto}|{problema}\n")
 
         limpiarPantalla()
 
@@ -50,9 +53,9 @@ def AltaTicket():
         print(f"Su Sector: {sector}")
         print(f"Asunto: {asunto}\n")
 
-        print(f"Mensaje: {problema}\n")
+        print(f"Problema: {problema}\n")
 
-        print("             Recorda el número de ticket\n")
+        print(">>> Recorda el número de ticket <<<\n")
 
         respuesta = input("Desea generar un nuevo ticket? (s/n): ").lower()
 
