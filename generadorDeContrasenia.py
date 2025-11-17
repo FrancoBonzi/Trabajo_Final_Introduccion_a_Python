@@ -15,10 +15,10 @@ def generarSoloConLetras():
     for i in range(longitudDeContrasenia):
         contraseña += random.choice(letras)
 
-    print(f"LA CONTRASEÑA FUE GENERADA: {contraseña} ")
+    print(f"CONTRASEÑA GENERADA: {contraseña}")
 
     with open("contrasenias.txt","a",encoding="utf-8") as archivo:
-        archivo.write("Letras: " + contraseña + "\n")
+        archivo.write("CONTRASEÑA GENERADA: " + contraseña + "\n")
 
     input("Presione ENTER para continuar...")    
 
@@ -34,11 +34,11 @@ def generarSoloConNumeros():
 
     for i in range(longitudDeContrasenia):
         contraseña += random.choice(numeros)
-    
-    print(f"LA CONTRASEÑA FUE GENERADA: {contraseña}")
 
+    print(f"CONTRASEÑA GENERADA: {contraseña}")    
+    
     with open("contrasenias.txt","a",encoding="utf-8") as archivo:
-        archivo.write("Números: "+ contraseña + "\n")
+        archivo.write("CONTRASEÑA GENERADA: "+ contraseña + "\n")
 
     input("Presione ENTER para continuar...")    
 
@@ -54,10 +54,10 @@ def generarSoloConLetrasYNumeros():
     for i in range(longitudDeContrasenia):
         contraseña += random.choice(letrasyNumeros)
 
-    print(f"LA CONTRASEÑA FUE GENERADA: {contraseña}")
+    print(f"CONTRASEÑA GENERADA: {contraseña}")
 
     with open("contrasenias.txt","a",encoding="utf-8") as archivo:
-        archivo.write("Letras y Números: "+ contraseña + "\n") 
+        archivo.write("CONTRASEÑA GENERADA: "+ contraseña + "\n") 
 
     input("Presione ENTER para continuar...")       
 
@@ -73,10 +73,10 @@ def generarContraseñaCompleta():
     for i in range(longitudDeContrasenia):
         contraseña += random.choice(letrasNumerosyCaracteres)
 
-    print(f"LA CONTRASEÑA FUE GENERADA: {contraseña}")
+    print(f"CONTRASEÑA GENERADA: {contraseña}")    
 
     with open("contrasenias.txt","a",encoding="utf-8") as archivo:
-        archivo.write("Letras, Números y caracteres: "+ contraseña + "\n")
+        archivo.write("CONTRASEÑA GENERADA: "+ contraseña + "\n")
 
     input("Presione ENTER para continuar...")        
 
