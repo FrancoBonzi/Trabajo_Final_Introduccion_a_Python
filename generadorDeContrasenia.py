@@ -1,5 +1,6 @@
+#Nombre y Apellido: Franco Santiago Bonzi
+
 import random
-import string
 
 def generarSoloConLetras():
 
@@ -8,12 +9,38 @@ def generarSoloConLetras():
     longitudDeContrasenia = int(input("Ingrese la longitud que quiere que sea su contraseña: "))
 
 
+    letras = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    contraseña = ""
+
+    for i in range(longitudDeContrasenia):
+        contraseña += random.choice(letras)
+
+    print(f"LA CONTRASEÑA FUE GENERADA: {contraseña} ")
+
+    with open("contrasenias.txt","a",encoding="utf-8") as archivo:
+        archivo.write("Letras: " + contraseña + "\n")
+
+    input("Presione ENTER para continuar...")    
+
+
 def generarSoloConNumeros():
 
     print("Se va a generar una contraseña solamente con números \n")
 
     longitudDeContrasenia = int(input("Ingrese la longitud que quiere que sea su contraseña: "))
+
+    numeros = "0123456789"
+    contraseña = ""
+
+    for i in range(longitudDeContrasenia):
+        contraseña += random.choice(numeros)
     
+    print(f"LA CONTRASEÑA FUE GENERADA: {contraseña}")
+
+    with open("contrasenias.txt","a",encoding="utf-8") as archivo:
+        archivo.write("Números: "+ contraseña + "\n")
+
+    input("Presione ENTER para continuar...")    
 
 def generarSoloConLetrasYNumeros():
 
@@ -21,11 +48,37 @@ def generarSoloConLetrasYNumeros():
 
     longitudDeContrasenia = int(input("Ingrese la longitud que quiere que sea su contraseña: "))
 
+    letrasyNumeros= "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+    contraseña = ""
+
+    for i in range(longitudDeContrasenia):
+        contraseña += random.choice(letrasyNumeros)
+
+    print(f"LA CONTRASEÑA FUE GENERADA: {contraseña}")
+
+    with open("contrasenias.txt","a",encoding="utf-8") as archivo:
+        archivo.write("Letras y Números: "+ contraseña + "\n") 
+
+    input("Presione ENTER para continuar...")       
+
 def generarContraseñaCompleta():
 
     print("Se va a generar una contraseña solamente con letras, números y caracteres \n")
 
     longitudDeContrasenia = int(input("Ingrese la longitud que quiere que sea su contraseña: "))
+
+    letrasNumerosyCaracteres = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()"
+    contraseña = ""
+
+    for i in range(longitudDeContrasenia):
+        contraseña += random.choice(letrasNumerosyCaracteres)
+
+    print(f"LA CONTRASEÑA FUE GENERADA: {contraseña}")
+
+    with open("contrasenias.txt","a",encoding="utf-8") as archivo:
+        archivo.write("Letras, Números y caracteres: "+ contraseña + "\n")
+
+    input("Presione ENTER para continuar...")        
 
 
 def salir():
@@ -62,7 +115,7 @@ def MenuPrincipal():
         elif opcionSeleccionada == 2:
             generarSoloConNumeros()
         elif opcionSeleccionada == 3:
-            generarSoloConLetrasYNumeros    
+            generarSoloConLetrasYNumeros()    
         elif opcionSeleccionada == 4:
             generarContraseñaCompleta() 
         elif opcionSeleccionada == 0:
