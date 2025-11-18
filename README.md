@@ -7,5 +7,5 @@
 ## Contenido del repositorio 
 
 - **APP 1:** Ticket
-- **APP 2:** Generador de contraseña
+- **APP 2:** Generador Contraseña
 
