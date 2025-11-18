@@ -36,12 +36,12 @@ def AltaTicket():
         nombre = input("Ingrese su Nombre: ")
         sector = input("Ingrese su Sector: ")
         asunto = input("Ingrese su asunto: ")
-        problema = input("Describa el problema que tiene: ")
+        mensaje = input("Ingrese un Mensaje: ")
 
         numeroTicket = random.randint(1000,9999)
 
         with open("tickets.txt","a",encoding="utf-8") as archivo:
-            archivo.write(f"{numeroTicket}|{nombre}|{sector}|{asunto}|{problema}\n")
+            archivo.write(f"{numeroTicket}|{nombre}|{sector}|{asunto}|{mensaje}\n")
 
         limpiarPantalla()
 
@@ -53,7 +53,7 @@ def AltaTicket():
         print(f"Su Sector: {sector}")
         print(f"Asunto: {asunto}\n")
 
-        print(f"Problema: {problema}\n")
+        print(f"Mensaje: {mensaje}\n")
 
         print(">>> Recorda el número de ticket <<<\n")
 
@@ -67,7 +67,54 @@ def LeerTicket():
     while True:
         limpiarPantalla()
 
-        numeroDeTicket = int(input("Ingrese el número de ticket: "))
+        numeroDeTicket = input("Ingrese el número de ticket: ")
+
+        encontrado=False
+        numeroABuscar = numeroDeTicket
+
+        if not os.path.exists("tickets.txt"):
+            print("\n Aún no hay tickets cargados...")
+            input("Presione ENTER para continuar") 
+            break
+
+        with open("tickets.txt","r",encoding="utf-8") as archivo:
+            for linea in archivo:
+              linea = linea.strip()
+
+              if not linea:
+                continue  
+              
+              partes = linea.split("|")
+
+              if len(partes) < 5:
+                continue
+              
+              numeroLinea = partes[0]
+
+              if numeroLinea == numeroABuscar:
+                limpiarPantalla()
+
+                print("===== TICKET ENCONTRADO ====\n")
+                print(f"Número: {partes[0]}")
+                print(f"Nombre: {partes[1]}")
+                print(f"Sector: {partes[2]}")
+                print(f"Asunto: {partes[3]}")
+                print(f"Mensaje: {partes[4]}")
+                print("============================\n")
+
+                encontrado=True
+                break
+        
+        if not encontrado:
+            print("EL NÚMERO DE TIKCET INGRESADO NO SE ENCUENTRA.")
+
+
+        opcion = input("\n¿Desea leer otro número de ticket (s/n): ").lower()
+
+        if opcion != 's':
+            print("SALIENDO DEL programa")   
+            break  
+
 
 def Salir():
 
