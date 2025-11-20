@@ -1,19 +1,31 @@
 #Nombre y Apellido: Franco Santiago Bonzi
 
-import random
+import secrets
+import string
+import sys
+
+diccionario = {
+    'letras' : string.ascii_letters,
+    'numeros' : string.digits,
+    'caracteres' : string.punctuation
+}
 
 def generarSoloConLetras():
 
     print("Se va a generar una contraseña solamente con letras \n")
 
-    longitudDeContrasenia = int(input("Ingrese la longitud que quiere que sea su contraseña: "))
+    longitudDeContrasenia = input("Ingrese la longitud que quiere que sea su contraseña: ")
 
+    while not longitudDeContrasenia.isdigit() or int(longitudDeContrasenia)<4:
+        print("\nERROR: Debe ingresar un número mayor a 4.\n")
+        longitudDeContrasenia = input("Ingrese la longitud que quiere que sea su contraseña: ")
 
-    letras = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    longitudDeContrasenia = int(longitudDeContrasenia)
+
     contraseña = ""
 
     for i in range(longitudDeContrasenia):
-        contraseña += random.choice(letras)
+        contraseña += secrets.choice(diccionario["letras"])
 
     print(f"CONTRASEÑA GENERADA: {contraseña}")
 
@@ -27,13 +39,18 @@ def generarSoloConNumeros():
 
     print("Se va a generar una contraseña solamente con números \n")
 
-    longitudDeContrasenia = int(input("Ingrese la longitud que quiere que sea su contraseña: "))
+    longitudDeContrasenia = input("Ingrese la longitud que quiere que sea su contraseña: ")
 
-    numeros = "0123456789"
+    while not longitudDeContrasenia.isdigit() or int(longitudDeContrasenia)<4:
+        print("\nERROR: Debe ingresar un número mayor a 4.\n")
+        longitudDeContrasenia = input("Ingrese la longitud que quiere que sea su contraseña: ")
+
+    longitudDeContrasenia = int(longitudDeContrasenia)    
+
     contraseña = ""
 
     for i in range(longitudDeContrasenia):
-        contraseña += random.choice(numeros)
+        contraseña += secrets.choice(diccionario["numeros"])
 
     print(f"CONTRASEÑA GENERADA: {contraseña}")    
     
@@ -46,13 +63,20 @@ def generarSoloConLetrasYNumeros():
 
     print("Se va a generar una contraseña solamente con letras y números \n")
 
-    longitudDeContrasenia = int(input("Ingrese la longitud que quiere que sea su contraseña: "))
+    longitudDeContrasenia = input("Ingrese la longitud que quiere que sea su contraseña: ")
 
-    letrasyNumeros= "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+    while not longitudDeContrasenia.isdigit() or int(longitudDeContrasenia)<4:
+        print("\nERROR: Debe ingresar un número mayor a 4.\n")
+        longitudDeContrasenia = input("Ingrese la longitud que quiere que sea su contraseña: ")
+
+    longitudDeContrasenia = int(longitudDeContrasenia)
+
+    letrasyNumeros = diccionario["letras"] + diccionario["numeros"]
+
     contraseña = ""
 
     for i in range(longitudDeContrasenia):
-        contraseña += random.choice(letrasyNumeros)
+        contraseña += secrets.choice(letrasyNumeros)
 
     print(f"CONTRASEÑA GENERADA: {contraseña}")
 
@@ -65,13 +89,19 @@ def generarContraseñaCompleta():
 
     print("Se va a generar una contraseña solamente con letras, números y caracteres \n")
 
-    longitudDeContrasenia = int(input("Ingrese la longitud que quiere que sea su contraseña: "))
+    longitudDeContrasenia = input("Ingrese la longitud que quiere que sea su contraseña: ")
 
-    letrasNumerosyCaracteres = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()"
+    while not longitudDeContrasenia.isdigit() or int(longitudDeContrasenia)<4:
+       print("\nERROR: Debe ingresar un número mayor a 4.\n")
+       longitudDeContrasenia = input("Ingrese la longitud que quiere que sea su contraseña: ")
+ 
+    longitudDeContrasenia = int(longitudDeContrasenia)
+
+    letrasNumerosyCaracteres = diccionario["letras"] + diccionario["numeros"] + diccionario["caracteres"]
     contraseña = ""
 
     for i in range(longitudDeContrasenia):
-        contraseña += random.choice(letrasNumerosyCaracteres)
+        contraseña += secrets.choice(letrasNumerosyCaracteres)
 
     print(f"CONTRASEÑA GENERADA: {contraseña}")    
 
@@ -83,6 +113,7 @@ def generarContraseñaCompleta():
 
 def salir():
     print("Saliendo del programa....")
+    sys.exit()
 
 
 

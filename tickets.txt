@@ -1,1 +1,5 @@
 1165|Gabriel|TECNO 3F|PC|No enciende la PC
+3957|Mariano|Sistemas|Problema con la PC|No le enciende la PC desde la mañana
+4472|Agustina|Recursos Humanos|Error en el sistema|No puedo acceder al sistema de gestión de los empleados
+2233|Delfina|Ventas|Problema con la impresora|La impresora imprime líneas negras en todas las hojas
+3780|Daniel|Desarrollo|Credenciales bloqueadas|Git no permite realizar push, dice que las credenciales están vencidas.

@@ -18,6 +18,7 @@ Un menu con 3 opciones - Alta ticket , Leer ticket , Salir.
 """
 import random
 import os
+import sys
 
 #FUNCIÓN PARA PODER LIMPIAR PANTALLA
 def limpiarPantalla():
@@ -38,10 +39,7 @@ def AltaTicket():
         asunto = input("Ingrese su asunto: ")
         mensaje = input("Ingrese un Mensaje: ")
 
-        numeroTicket = random.randint(1000,9999)
-
-        with open("tickets.txt","a",encoding="utf-8") as archivo:
-            archivo.write(f"{numeroTicket}|{nombre}|{sector}|{asunto}|{mensaje}\n")
+        numero_ticket = random.randrange(1000,9999)
 
         limpiarPantalla()
 
@@ -49,7 +47,7 @@ def AltaTicket():
         print("             Se genero el siguiente Ticket")
         print("==========================================================\n")
 
-        print(f"Su nombre: {nombre}         N° Ticket: {numeroTicket}")
+        print(f"Su nombre: {nombre}         N° Ticket: {numero_ticket}")
         print(f"Su Sector: {sector}")
         print(f"Asunto: {asunto}\n")
 
@@ -57,41 +55,33 @@ def AltaTicket():
 
         print(">>> Recorda el número de ticket <<<\n")
 
+        with open("tickets.txt","a",encoding="utf-8") as archivo:
+            archivo.write(f"{numero_ticket}|{nombre}|{sector}|{asunto}|{mensaje}\n")
+
         respuesta = input("Desea generar un nuevo ticket? (s/n): ").lower()
 
         if respuesta != 's':
-            break
+            return
 
 def LeerTicket():
 
     while True:
         limpiarPantalla()
 
-        numeroDeTicket = input("Ingrese el número de ticket: ")
-
-        encontrado=False
-        numeroABuscar = numeroDeTicket
+        numeroDeTicket = input("Ingrese el número de ticket: ")    
 
         if not os.path.exists("tickets.txt"):
             print("\n Aún no hay tickets cargados...")
             input("Presione ENTER para continuar") 
-            break
+            return
+
+        encontrado = False
 
         with open("tickets.txt","r",encoding="utf-8") as archivo:
             for linea in archivo:
-              linea = linea.strip()
+              partes = linea.strip().split("|")
 
-              if not linea:
-                continue  
-              
-              partes = linea.split("|")
-
-              if len(partes) < 5:
-                continue
-              
-              numeroLinea = partes[0]
-
-              if numeroLinea == numeroABuscar:
+              if partes[0] == numeroDeTicket:
                 limpiarPantalla()
 
                 print("===== TICKET ENCONTRADO ====\n")
@@ -106,7 +96,7 @@ def LeerTicket():
                 break
         
         if not encontrado:
-            print("EL NÚMERO DE TIKCET INGRESADO NO SE ENCUENTRA.")
+            print("\nEL NÚMERO DE TIKCET INGRESADO NO SE ENCUENTRA.\n")
 
 
         opcion = input("\n¿Desea leer otro número de ticket (s/n): ").lower()
@@ -117,19 +107,14 @@ def LeerTicket():
 
 
 def Salir():
-
-    confirmarRespuesta = input("¿Estás seguro de salir (s/n): ?").lower()
-
-    if confirmarRespuesta == 's':
-        print("Está saliendo del programa...")  
-        exit()     
-    else:
-        return
+    print("\Cerrando el sistema...")
+    sys.exit() 
 
 def Menu():
 
     while True:
         
+        limpiarPantalla()
 
         print("Hola bienvenido al Sistema de Tickets")
 
@@ -147,7 +132,8 @@ def Menu():
             Salir()
             break
         else:
-            print("LA OPCIÓN INGRESADA NO ES LA CORRETA. INTENTE DE NUEVO")   
+            print("LA OPCIÓN INGRESADA NO ES LA CORRECTA. INTENTE DE NUEVO")   
+            input("Presione ENTER para continuar...")
       
 
         
