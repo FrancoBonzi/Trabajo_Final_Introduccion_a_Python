@@ -3,3 +3,5 @@
 4472|Agustina|Recursos Humanos|Error en el sistema|No puedo acceder al sistema de gestión de los empleados
 2233|Delfina|Ventas|Problema con la impresora|La impresora imprime líneas negras en todas las hojas
 3780|Daniel|Desarrollo|Credenciales bloqueadas|Git no permite realizar push, dice que las credenciales están vencidas.
+5557|Pablo|Contabilidad|Acceso denegado|No puedo ingresar al sistema contable, dice usuario bloqueado.
+7918|Carlos|Sistemas|Actualización pendiente|La PC no instala las actualizaciones

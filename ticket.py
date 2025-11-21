@@ -58,10 +58,14 @@ def AltaTicket():
         with open("tickets.txt","a",encoding="utf-8") as archivo:
             archivo.write(f"{numero_ticket}|{nombre}|{sector}|{asunto}|{mensaje}\n")
 
-        respuesta = input("Desea generar un nuevo ticket? (s/n): ").lower()
+        respuesta = input("¿Desea generar un nuevo ticket? (s/n): ").lower()
 
-        if respuesta != 's':
-            return
+        while respuesta != 's' and respuesta !='n':
+            print("\nERROR: Debe ingresar 's' o 'n'.\n")
+            respuesta = input("¿Desea generar un nuevo ticket? (s/n): ").lower()
+
+        if respuesta == 'n':
+            return    
 
 def LeerTicket():
 
@@ -99,15 +103,18 @@ def LeerTicket():
             print("\nEL NÚMERO DE TIKCET INGRESADO NO SE ENCUENTRA.\n")
 
 
-        opcion = input("\n¿Desea leer otro número de ticket (s/n): ").lower()
+        respuesta = input("\n¿Desea leer otro número de ticket? (s/n): ").lower()
 
-        if opcion != 's':
-            print("SALIENDO DEL programa")   
-            break  
+        while respuesta != 's' and respuesta != 'n':
+            print("\nERROR: Debe ingresar 's' o 'n'.\n")
+            respuesta = input("¿Desea leer otro número de ticket? (s/n): ").lower()
+
+        if respuesta == 'n':
+            return
 
 
 def Salir():
-    print("\Cerrando el sistema...")
+    print("Cerrando el sistema...")
     sys.exit() 
 
 def Menu():
