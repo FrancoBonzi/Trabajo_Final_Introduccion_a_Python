@@ -3,6 +3,7 @@
 import secrets
 import string
 import sys
+import os
 
 diccionario = {
     'letras' : string.ascii_letters,
@@ -10,7 +11,12 @@ diccionario = {
     'caracteres' : string.punctuation
 }
 
+def limpiarPantalla():
+    os.system("cls" if os.name == "nt" else "clear")
+
 def generarSoloConLetras():
+
+    limpiarPantalla()
 
     print("Se va a generar una contraseña solamente con letras \n")
 
@@ -37,6 +43,8 @@ def generarSoloConLetras():
 
 def generarSoloConNumeros():
 
+    limpiarPantalla()
+
     print("Se va a generar una contraseña solamente con números \n")
 
     longitudDeContrasenia = input("Ingrese la longitud que quiere que sea su contraseña: ")
@@ -60,6 +68,8 @@ def generarSoloConNumeros():
     input("Presione ENTER para continuar...")    
 
 def generarSoloConLetrasYNumeros():
+
+    limpiarPantalla()
 
     print("Se va a generar una contraseña solamente con letras y números \n")
 
@@ -87,6 +97,8 @@ def generarSoloConLetrasYNumeros():
 
 def generarContraseñaCompleta():
 
+    limpiarPantalla()
+
     print("Se va a generar una contraseña solamente con letras, números y caracteres \n")
 
     longitudDeContrasenia = input("Ingrese la longitud que quiere que sea su contraseña: ")
@@ -112,6 +124,8 @@ def generarContraseñaCompleta():
 
 
 def salir():
+
+    limpiarPantalla()
     print("Saliendo del programa....")
     sys.exit()
 
@@ -120,11 +134,14 @@ def salir():
 def MenuPrincipal():
 
     while True: 
+
+        limpiarPantalla()
+
         print("*--------------Bienvenidos-------------*")
 
         print("       Generador de contraseñas         ")
 
-        print("------------------*.*-------------------")
+        print("------------------*.*-------------------\n")
 
         print("Seleccione una de las siguientes opciones: \n")
 
