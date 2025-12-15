@@ -129,7 +129,14 @@ def Menu():
         print("2 - Leer un Ticket")
         print("3 - Salir")
 
-        opcionElegida = int(input(f"Seleccione: "))
+        opcionElegida = (input(f"Seleccione: "))
+
+        if not opcionElegida.isdigit():
+            print("\nERROR: Debe ingresar un número válido.")
+            input("Presione ENTER para continuar...")
+            continue
+
+        opcionElegida = int(opcionElegida)
 
         if opcionElegida == 1:
             AltaTicket()

@@ -156,7 +156,14 @@ def MenuPrincipal():
         print(">> 0. Salir \n")
 
 
-        opcionSeleccionada = int(input("|> Escriba la opción seleccionada: "))
+        opcionSeleccionada = input("|> Escriba la opción seleccionada: ")
+
+        if not opcionSeleccionada.isdigit():
+            print("\nERROR: Debe ingresar un número válido.")
+            input("Presione ENTER para continuar...")
+            continue
+
+        opcionSeleccionada = int(opcionSeleccionada)
 
         if opcionSeleccionada == 1:
             generarSoloConLetras()  
